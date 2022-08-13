@@ -33,7 +33,7 @@
             <div class="small-box bg-red">
               <div class="inner">
                 <h3>{{$quiz}}</h3>
-                <p>Total Quiz</p>
+                <p>Total Course</p>
               </div>
               <div class="icon">
                 <i class="fa fa-question-circle-o"></i>

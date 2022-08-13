@@ -6,6 +6,8 @@ use App\Answer;
 use App\copyrighttext;
 use App\Question;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::redirect('/', 'home');
 
+// Auth::routes(['verify'=>true,'register' => false]);
 Auth::routes();
 
 /*google login route*/
@@ -36,6 +39,11 @@ Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallb
 
 // Route::get('login/google', 'Auth\LoginController@redirectToProvider');
 // Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('register',function(){
+  return redirect()->route('login');
+});
+
 
 Route::get('/faqs',function(){
   return view('faq');
@@ -88,10 +96,10 @@ Route::group(['middleware'=> 'isadmin'], function(){
 
   Route::post('/admin/users/destroy', 'DestroyAllController@AllUsersDestroy');
   Route::post('/admin/answers/destroy', 'DestroyAllController@AllAnswersDestroy');
-
+  Route::resource('/admin/users', 'UsersController');
 });
 
-Route::resource('/admin/users', 'UsersController');
+
 Route::get('/admin/profile', function(){
   if (Auth::check()) {
     return view('admin.users.profile');
@@ -151,6 +159,8 @@ Route::get('start_quiz/{id}/finish', function($id){
   return view('finish', compact('ans','q','topic', 'answers', 'count_questions'));
 });
 
+
+Route::group(['middleware'=> 'isadmin'], function(){
 
 Route::get('/admin/pages','PagesController@index')->name('pages.index');
 
@@ -216,7 +226,7 @@ Route::post('/admin/moresettings/socialicons/insert','SocialController@store')->
   Route::get('/admin/payment', 'PaymentController@index')->name('admin.payment');
 
 // route for processing payment
-
+});
 
 
 

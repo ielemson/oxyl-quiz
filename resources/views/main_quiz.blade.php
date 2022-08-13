@@ -72,8 +72,10 @@
       @endif
       @if(empty($que))
       <div class="alert alert-danger">
-            No Questions in this quiz
+            No Questions in this Course
       </div>
+      <a href="{{url('/')}}" class="btn btn-primary btn-sm">Go Home</a>
+
       @endif
     </div>
   @endif

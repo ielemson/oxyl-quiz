@@ -98,7 +98,6 @@
                           <li>Total Marks <i class="fa fa-long-arrow-right"></i></li>
                           <li>Total Questions <i class="fa fa-long-arrow-right"></i></li>
                           <li>Total Time <i class="fa fa-long-arrow-right"></i></li>
-                          <li>Quiz Price <i class="fa fa-long-arrow-right"></i></li>
                         </ul>
                       </div>
                       <div class="col-xs-6">
@@ -124,13 +123,7 @@
                             {{$topic->timer}} minutes
                           </li>
 
-                          <li class="amount">
-                            @if(!empty($topic->amount))
-                            {{-- <i class="{{$setting->currency_symbol}}"></i> {{$topic->amount}}   --}}
-                             @else
-                               Free
-                            @endif
-                          </li>
+                        
                         </ul>
                       </div>
                     </div>
@@ -198,11 +191,11 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="home-main-block">
-              @if ($setting)
-                <h1 class="main-block-heading text-center">{{$setting->welcome_txt}}</h1>
-              @endif
+              
+                <h3 class="main-block-heading text-center">Course Assessment</h3>
+              
                 <blockquote>
-                  Please <a href="{{ route('login') }}">Login</a> To Start Quiz >>>
+                  <a href="{{ route('login') }}"> Please Login To Start Assessment >>></a> 
                 </blockquote>
             </div>
         </div>
